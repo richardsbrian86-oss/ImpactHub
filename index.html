@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ImpactHub — Job Search Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <h1>Job Search Dashboard — Brian Richards</h1>
+      <button id="themeToggle" type="button">Toggle theme</button>
+    </header>
+    <p class="sub">
+      Skills &amp; qualifications as of <strong id="asOf"></strong>
+      <span class="dot">·</span> Sources: Indeed resume profile, Gmail application history, Google Calendar (via Zapier)
+      <span class="dot">·</span> <span id="prefLine"></span>
+    </p>
+
+    <section>
+      <div class="tiles" id="tiles"></div>
+    </section>
+
+    <section class="charts">
+      <div class="card">
+        <h2>Applications by career track</h2>
+        <p class="h2-note">Hover a bar for interview conversion</p>
+        <div id="catChart"></div>
+      </div>
+      <div class="card">
+        <h2>Applications per month</h2>
+        <p class="h2-note">March – July 2026</p>
+        <div id="monthChart"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Your qualification profile</h2>
+      <p class="h2-note">Every trait below is verbatim from your Indeed skills list — these are the exact strings matched to each job.</p>
+      <div class="profile-grid">
+        <div id="skillGroups"></div>
+        <div>
+          <div class="skill-group">
+            <div class="sg-name">Certifications</div>
+            <div class="chips" id="certChips"></div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-name">Work history</div>
+            <div id="expLines"></div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-name">Most frequently matched traits across your applications</div>
+            <div class="top-traits" id="topTraits"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Interview timeline</h2>
+      <p class="h2-note">Verified against your Google Calendar (retrieved via Zapier), newest first</p>
+      <div id="interviewList"></div>
+    </section>
+
+    <section>
+      <h2>Applications &amp; your exact qualifying traits</h2>
+      <p class="h2-note">Click any application to see the exact skills, certifications, and experience that qualify you for it. <span id="appCount"></span></p>
+      <div class="filters">
+        <input type="search" id="search" placeholder="Search role, company, or skill…" aria-label="Search applications">
+      </div>
+      <div class="filters" id="catFilters"></div>
+      <div class="filters" id="statusFilters"></div>
+      <div class="app-list" id="appList"></div>
+    </section>
+
+    <footer>
+      Built from your real application history (Gmail, Mar 1 – Jul 17, 2026), Indeed resume profile, and Google Calendar interview events.
+      To refresh, update <code>data.js</code>. Trait matching uses only skills you actually hold — no invented qualifications.
+    </footer>
+  </div>
+  <div id="tip" role="tooltip"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
